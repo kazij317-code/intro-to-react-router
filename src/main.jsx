@@ -1,5 +1,5 @@
-// // -------------------------------Start: 37_1 ---------------------------------------
-// // (1) for React Router Instillation: Command in terminal or cmd which project folder is creat: npm i react-router
+// // -------------------------------Start: 38_1 ---------------------------------------
+// // (1) for React Router Instillation: Command in terminal or cmd where project folder is created: npm i react-router
 
 // import { StrictMode } from 'react'
 // import { createRoot } from 'react-dom/client'
@@ -7,7 +7,7 @@
 // import App from './App.jsx'
 // // (2) st Create a Router and Render from react router:
 // import { createBrowserRouter, RouterProvider } from "react-router";
-// // (3)commit
+// // (3) st commit
 // // import { RouterProvider } from "react-router/dom";
 
 // // const router = createBrowserRouter([
@@ -16,12 +16,14 @@
 // //     element: <div>Hello World</div>,
 // //   },
 // // ]);
+// // createBrowserRouter+enter
 // const router = createBrowserRouter([
 //   {
 //     path: '/',
 //     element: <div>Hello from react router</div>
 //   }
 // ])
+// // (3)en
 
 // // (2) en
 
@@ -30,28 +32,33 @@
 // createRoot(document.getElementById('root')).render(
 //   <StrictMode>
 //     {/* <App /> */}
-//     {/* (4)st commit <App /> */}
+//     {/* (4)st commit <App /> <RouterProvider+enter */}
 //     <RouterProvider router={router}></RouterProvider>
 //     {/* (4)en */}
 //   </StrictMode>,
 // )
 // // --------------------------
-// // Practice:
-// // import { StrictMode } from 'react'
-// // import { createRoot } from 'react-dom/client'
-// // import './index.css'
-// // import App from './App.jsx'
+// Practice:
+// import { StrictMode } from 'react'
+// import { createRoot } from 'react-dom/client'
+// import './index.css'
+// import App from './App.jsx'
 
+// const router = createBrowserRouter([
+//   path: '/',
+//   element: <div>Hello from react router</div>
+// ])
 
-// // createRoot(document.getElementById('root')).render(
-// //   <StrictMode>
-// //     <App />
+// createRoot(document.getElementById('root')).render(
+//   <StrictMode>
+//     {/* <App /> */}
+//     <RouterProvider router={router}></RouterProvider>
     
-// //   </StrictMode>,
-// // )
+//   </StrictMode>,
+// )
 
 // //---------------------------
-// // -------------------------------End:37_1-(1) to (4) --------------------------------
+// // -------------------------------End:38_1-(1) to (4) --------------------------------
 // -------------------------------Start: 38_2 ---------------------------------------
 
 
@@ -61,7 +68,7 @@ import './index.css'
 import App from './App.jsx'
 
 // import { createBrowserRouter, RouterProvider } from "react-router";
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, createHashRouter, RouterProvider } from "react-router-dom";
 import Root from './assets/components/Root/Root.jsx';
 import Home from './assets/components/Home/Home.jsx';
 import Mobiles from './assets/components/Mobiles/Mobiles.jsx';
@@ -78,11 +85,12 @@ const router = createHashRouter([
     path: '/',
     Component: Root,
     children: [
-      // (9) Home+enter, {index: true, Component: Home}, {path:'mobiles', Component: Mobiles}
+      // (9) Home+enter, {Component: Home}, {path:'mobiles', Component: Mobiles}
       {index: true, Component: Home},
       {path:'mobiles', Component: Mobiles},
-      // (11) Laptops+enter
-      {path: 'laptops', Component: Laptops}
+      // (11) Laptops+enter then in Header.jsx file
+      {path: 'laptops', Component: Laptops},
+      {path: 'about', element: <div>About me here</div>}
 
       // (9)en then create Laptops.jsx file creating Laptop folder in component file
     ]
@@ -124,13 +132,51 @@ createRoot(document.getElementById('root')).render(
 // import './index.css'
 // import App from './App.jsx'
 
+// const router = createBrowserRouter([
+//   // {
+//   //   path: '/',
+//   //   element: <div>Hello from react router</div>
+//   // },
+
+//   {
+//     path: '/',
+//     Component: Root,
+//     children: [
+//       {index: true, Component: Home},
+//       {path: 'mobiles', Component: Mobiles},
+//       {path: 'laptops', Component: Laptops}
+//     ]
+//   },
+
+//   {
+//     path: 'about',
+//     element: <div>About me here</div>
+//   },
+
+//   {
+//     path: 'blogs',
+//     element: <div>All my blogs are here </div>
+//   },
+
+//   {
+//     path: 'app',
+//     Component: App
+//   },
+
+//   {
+//     path: '/app2',
+//     element: <App></App>
+//   }
+// ])
 
 // createRoot(document.getElementById('root')).render(
 //   <StrictMode>
-//     <App />
+//     {/* <App /> */}
+//     <RouterProvider router={router}></RouterProvider>
     
 //   </StrictMode>,
 // )
 
+
 //---------------------------
-// -------------------------------End:38_2-(1) to () --------------------------------
+// -------------------------------End:38_2-(1) to (11) --------------------------------

@@ -19,5 +19,20 @@ const Root = () => {
 export default Root;
 // (2)en then create Header.jsx file creating Header file in component folder
 
+// Practice:
+// import React from 'react';
+// import Header from '../Header/Header';
+// import { Outlet } from 'react-router';
+
+// const Root = () => {
+//     return (
+//         <div>
+//             <Header></Header>
+//             <Outlet></Outlet>
+//         </div>
+//     );
+// };
+
+// export default Root;
 
 // -------------------------------End:38_2-(1) to () --------------------------------
