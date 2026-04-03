@@ -1,4 +1,4 @@
-// // -------------------------------Start: 38_1 ---------------------------------------
+ // // -------------------------------Start: 38_1 ---------------------------------------
 // // (1) for React Router Instillation: Command in terminal or cmd where project folder is created: npm i react-router
 
 // import { StrictMode } from 'react'
