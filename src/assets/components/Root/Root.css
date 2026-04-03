@@ -1,0 +1,14 @@
+/* (12) st*/
+.root-main {
+    display: flex;
+    gap: 20px;
+}
+
+/* (12) st then in Root.jsx file*/
+/* (16) st*/
+nav a.active{
+    text-decoration: underline;
+    color: red;
+}
+
+/* (16) st*/

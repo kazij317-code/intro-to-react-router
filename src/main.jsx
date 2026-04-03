@@ -59,10 +59,128 @@
 
 // //---------------------------
 // // -------------------------------End:38_1-(1) to (4) --------------------------------
-// -------------------------------Start: 38_2 ---------------------------------------
+// // -------------------------------Start: 38_2 ---------------------------------------
+
+// import { StrictMode } from 'react'
+// import { createRoot } from 'react-dom/client'
+// import './index.css'
+// import App from './App.jsx'
+
+// // import { createBrowserRouter, RouterProvider } from "react-router";
+// import { createBrowserRouter, createHashRouter, RouterProvider } from "react-router-dom";
+// import Root from './assets/components/Root/Root.jsx';
+// import Home from './assets/components/Home/Home.jsx';
+// import Mobiles from './assets/components/Mobiles/Mobiles.jsx';
+// import Laptops from './assets/components/Laptops/Laptops.jsx';
 
 
-import { StrictMode } from 'react'
+// const router = createHashRouter([
+//   // {
+//   //   path: '/',
+//   //   element: <div>Hello from react router</div>
+//   // },
+//   // (6) st commit previous, Root+enter
+//   {
+//     path: '/',
+//     Component: Root,
+//     children: [
+//       // (9) Home+enter, {Component: Home}, {path:'mobiles', Component: Mobiles}
+//       {index: true, Component: Home},
+//       {path:'mobiles', Component: Mobiles},
+//       // (11) Laptops+enter then in Header.jsx file
+//       {path: 'laptops', Component: Laptops},
+//       {path: 'about', element: <div>About me here</div>}
+
+//       // (9)en then create Laptops.jsx file creating Laptop folder in component file
+//     ]
+//   },
+//   // (6) en then create Home.jsx file creating Home folder in component
+  
+//   // (1) st
+//   {
+//     path: 'about',
+//     element: <div>About me here</div>
+//   },
+//   {
+//     path: 'blogs',
+//     element: <div>All my blogs are here</div>
+//   },
+//   {
+//     path: 'app',
+//     Component: App
+//   },
+//   {
+//     path: '/app2',
+//     // Component: App
+//     element: <App></App>
+//   }
+//   // (1)en then create Root.jsx file creating Root folder creating component folder in src folder
+// ])
+
+// createRoot(document.getElementById('root')).render(
+//   <StrictMode>
+    
+//     <RouterProvider router={router}></RouterProvider>
+    
+//   </StrictMode>
+// );
+// // --------------------------
+// // Practice:
+// // import { StrictMode } from 'react'
+// // import { createRoot } from 'react-dom/client'
+// // import './index.css'
+// // import App from './App.jsx'
+
+// // const router = createBrowserRouter([
+// //   // {
+// //   //   path: '/',
+// //   //   element: <div>Hello from react router</div>
+// //   // },
+
+// //   {
+// //     path: '/',
+// //     Component: Root,
+// //     children: [
+// //       {index: true, Component: Home},
+// //       {path: 'mobiles', Component: Mobiles},
+// //       {path: 'laptops', Component: Laptops}
+// //     ]
+// //   },
+
+// //   {
+// //     path: 'about',
+// //     element: <div>About me here</div>
+// //   },
+
+// //   {
+// //     path: 'blogs',
+// //     element: <div>All my blogs are here </div>
+// //   },
+
+// //   {
+// //     path: 'app',
+// //     Component: App
+// //   },
+
+// //   {
+// //     path: '/app2',
+// //     element: <App></App>
+// //   }
+// // ])
+
+// // createRoot(document.getElementById('root')).render(
+// //   <StrictMode>
+// //     {/* <App /> */}
+// //     <RouterProvider router={router}></RouterProvider>
+    
+// //   </StrictMode>,
+// // )
+
+// //---------------------------
+// // -------------------------------End:38_2-(1) to (11) --------------------------------
+// -------------------------------Start: 38_4 ---------------------------------------
+
+import { StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
@@ -73,31 +191,44 @@ import Root from './assets/components/Root/Root.jsx';
 import Home from './assets/components/Home/Home.jsx';
 import Mobiles from './assets/components/Mobiles/Mobiles.jsx';
 import Laptops from './assets/components/Laptops/Laptops.jsx';
-
+import Users from './assets/components/Users/Users.jsx';
+import Users2 from './assets/components/Users2/Users2.jsx';
+// (11)
+const usersPromise = fetch('https://jsonplaceholder.typicode.com/users').then(res => res.json());
 
 const router = createHashRouter([
-  // {
-  //   path: '/',
-  //   element: <div>Hello from react router</div>
-  // },
-  // (6) st commit previous, Root+enter
   {
     path: '/',
     Component: Root,
     children: [
-      // (9) Home+enter, {Component: Home}, {path:'mobiles', Component: Mobiles}
       {index: true, Component: Home},
       {path:'mobiles', Component: Mobiles},
-      // (11) Laptops+enter then in Header.jsx file
       {path: 'laptops', Component: Laptops},
-      {path: 'about', element: <div>About me here</div>}
+      // (2) st 
+      
+      {
+        path: 'users', 
+        // (5 st fetch(from json placeholder))
+        loader: () => fetch('https://jsonplaceholder.typicode.com/users'),
+        // (5 en) then in Users.jsx file
+        // (4)Component: Users, Users+enter
+        Component: Users
+      },
+      // (2)en then create Users.jsx file creating Users folder in component folder
+      // (8)st
+      {
+        path: 'users2',
+        element: <Suspense fallback={<span>Loading ....</span>}>
+          {/* (10) <Users2 + enter*/}
+          {/* (12) usersPromise={usersPromise} then in Users2.jsx file*/}
+          <Users2 usersPromise={usersPromise}></Users2>
 
-      // (9)en then create Laptops.jsx file creating Laptop folder in component file
+        </Suspense>
+      },
+      // (8)en then create Users2.jsx file creating Users2 folder in component folder
+      {path: 'about', element: <div>About me here</div>}
     ]
   },
-  // (6) en then create Home.jsx file creating Home folder in component
-  
-  // (1) st
   {
     path: 'about',
     element: <div>About me here</div>
@@ -115,7 +246,6 @@ const router = createHashRouter([
     // Component: App
     element: <App></App>
   }
-  // (1)en then create Root.jsx file creating Root folder creating component folder in src folder
 ])
 
 createRoot(document.getElementById('root')).render(
@@ -132,6 +262,7 @@ createRoot(document.getElementById('root')).render(
 // import './index.css'
 // import App from './App.jsx'
 
+// const usersPromise = fetch('https://jsonplaceholder.typicode.com/users').then(res => res.json());
 // const router = createBrowserRouter([
 //   // {
 //   //   path: '/',
@@ -144,7 +275,19 @@ createRoot(document.getElementById('root')).render(
 //     children: [
 //       {index: true, Component: Home},
 //       {path: 'mobiles', Component: Mobiles},
-//       {path: 'laptops', Component: Laptops}
+//       {path: 'laptops', Component: Laptops},
+//       {
+//         path: 'users',
+//         loader: () => fetch('https://jsonplaceholder.typicode.com/users')
+//         Component: Users
+//       },
+
+//       {
+//         path: 'users2',
+//         element: <Suspense fallback={<span>Loading....</span>}>
+//           <Users2 usersPromise={usersPromise}></Users2>
+//         </Suspense>
+//       }
 //     ]
 //   },
 
@@ -177,6 +320,4 @@ createRoot(document.getElementById('root')).render(
 //   </StrictMode>,
 // )
 
-
-//---------------------------
-// -------------------------------End:38_2-(1) to (11) --------------------------------
+// -------------------------------End:38_4-(1) to (11) --------------------------------
