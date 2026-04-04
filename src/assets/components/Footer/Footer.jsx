@@ -7,8 +7,8 @@ const Footer = () => {
         <div>
             <p><small>Thank you for visiting our website</small></p>
             {/* (7)st */}
-            <a href="/">terms</a>
-            <a href="/">privacy</a>
+            <a href="#/">terms</a>
+            <a href="#/">privacy</a>
             <a href="#/#/fb">Facebook</a>
             {/* (7)en then in Root.jsx file*/}
         </div>

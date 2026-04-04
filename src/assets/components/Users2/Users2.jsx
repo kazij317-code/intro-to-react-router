@@ -24,6 +24,8 @@ export default Users2;
 // const Users2 = ({usersPromise}) => {
 //     const users = use(userPromise)
 //     console.log('users 2 suspense data load', users);
+
+
     
 //     return (
 //         <div>
