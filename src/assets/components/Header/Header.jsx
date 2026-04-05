@@ -211,8 +211,9 @@ const Header = () => {
                 <NavLink to="/app2">APP2</NavLink> 
                 <NavLink to="/users">Users</NavLink>
                 <NavLink to="/users2">Users2</NavLink>
-                {/* (7) then create Posts.jsx file creating Posts file in component folder*/}
+                {/* (7) st */}
                 <NavLink to="/posts">Posts</NavLink>
+                {/* (7) en then create Posts.jsx file creating Posts file in component folder*/}
             </nav>          
         </div>
     );
@@ -255,6 +256,7 @@ export default Header;
 //                 <NavLink to="/app2">App2</NavLink>
 //                 <NavLink to="/users">Users</NavLink>
 //                 <NavLink to="/users2">Users2</NavLink>
+//                 <NavLink to="/posts">Posts</NavLink>
 //             </nav>
 //         </div>
 //     );

@@ -500,6 +500,7 @@ import Users from './assets/components/Users/Users.jsx';
 import Users2 from './assets/components/Users2/Users2.jsx';
 import UserDetails from './assets/components/UserDetails/UserDetails.jsx';
 import Posts from './assets/components/Posts/Posts.jsx';
+import PostDetail from './assets/components/PostDetail/PostDetail.jsx';
 
 const usersPromise = fetch('https://jsonplaceholder.typicode.com/users').then(res => res.json());
 
@@ -543,10 +544,10 @@ const router = createHashRouter([
         //   // (2)en
         //   fetch('https://jsonplaceholder.typicode.com/users')},
 
-          // (3)st commit previous
+          // (3)st commit (2) 
           loader: ({params}) => fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`),
 
-          // (3)en then in UserDetail.jsx
+          // (3)en then in UserDetails.jsx
           // (1) en 
           Component: UserDetails
       },
@@ -557,7 +558,13 @@ const router = createHashRouter([
         Component: Posts
       },
       // (9)st then in Posts.jsx file
-
+      // (20)st
+      {
+        path: 'posts/:postId',
+        loader: ({params}) => fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`),
+        Component: PostDetail
+      },
+      // (20)en then in postDetail.jsx file
       { path: 'about', element: <div>About me here</div> }
     ]
   },
@@ -615,6 +622,16 @@ createRoot(document.getElementById('root')).render(
 //         loader: () => fetch('https://jsonplaceholder.typicode.com/users'),
 //         Component: Users
 //       },
+//       {
+//         path: 'posts',
+//         loader: ()=> fetch('https://jsonplaceholder.typicode.com/posts'),
+//         Component: Posts
+//       },
+//       {
+//         path: 'posts/:postId',
+//         loader: ({params}) => fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`),
+//         Component: PostDetail
+//       },
 
 //       {
 //         path: 'users2',
@@ -625,8 +642,14 @@ createRoot(document.getElementById('root')).render(
 
 //       {
 //         path: 'users/:userId',
+//         loader: ({params}) => fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`),
 //         Component: UserDetails
-//       }
+//       },
+//       {
+//         path: 'posts',
+//         loader: () => fetch('https://jsonplaceholder.typicode.com/posts'),
+//         Component: Posts
+//       },
 
 //       {
 //         path: 'about',

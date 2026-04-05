@@ -57,9 +57,15 @@ export default UserDetails;
 // import React from 'react';
 
 // const UserDetails = () => {
+//     const user = useLoaderData();
+//     console.log(user);
+//     const {name, website} = user;
+    
 //     return (
 //         <div>
 //             <h3>User Details here</h3>
+//             <h5>Name:{name}</h5>
+//             <p>Website:{website}</p>
 //         </div>
 //     );
 // };
