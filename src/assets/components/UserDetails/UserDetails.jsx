@@ -79,7 +79,7 @@
 // -------------------------------Start: 37_7 ---------------------------------------
 
 import React from 'react';
-import { useLoaderData, useParams } from 'react-router';
+import { useLoaderData, useNavigate, useParams } from 'react-router';
 
 const UserDetails = () => {
     
@@ -98,11 +98,18 @@ const UserDetails = () => {
     // (14) en
     
     const {name, website} = user;
+    const navigate = useNavigate();
     return (
         <div>
             <h3>User Details here</h3>
             <h5>Name: {name}</h5>
             <p>Website: {website}</p>
+            <button onClick={() => navigate(-1)}>Go Back</button>
+            <button onClick={() => navigate('/')}>Go Home</button>
+            <button onClick={() => navigate('/mobiles')}>Go Mobiles</button>
+            <button onClick={() => navigate('/laptops')}>Go Laptops</button>
+            <button onClick={() => navigate('/users2')}>Go Users2</button>
+            <button onClick={() => navigate('/posts')}>Go Posts</button>
         </div>
     );
 };
