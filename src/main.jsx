@@ -483,7 +483,207 @@
 // // )
 
 // // -------------------------------End:37_5-(1) to (12) --------------------------------
-// -------------------------------Start: 37_6 ---------------------------------------
+// // -------------------------------Start: 37_6 ---------------------------------------
+
+// import { StrictMode, Suspense } from 'react'
+// import { createRoot } from 'react-dom/client'
+// import './index.css'
+// import App from './App.jsx'
+
+// // import { createBrowserRouter, RouterProvider } from "react-router";
+// import { createBrowserRouter, createHashRouter, RouterProvider } from "react-router-dom";
+// import Root from './assets/components/Root/Root.jsx';
+// import Home from './assets/components/Home/Home.jsx';
+// import Mobiles from './assets/components/Mobiles/Mobiles.jsx';
+// import Laptops from './assets/components/Laptops/Laptops.jsx';
+// import Users from './assets/components/Users/Users.jsx';
+// import Users2 from './assets/components/Users2/Users2.jsx';
+// import UserDetails from './assets/components/UserDetails/UserDetails.jsx';
+// import Posts from './assets/components/Posts/Posts.jsx';
+// import PostDetail from './assets/components/PostDetail/PostDetail.jsx';
+
+// const usersPromise = fetch('https://jsonplaceholder.typicode.com/users').then(res => res.json());
+
+// const router = createHashRouter([
+//   {
+//     path: '/',
+//     Component: Root,
+//     children: [
+//       { index: true, Component: Home },
+//       { path: 'mobiles', Component: Mobiles },
+//       { path: 'laptops', Component: Laptops },
+  
+//       {
+//         path: 'users',
+//         loader: () => fetch('https://jsonplaceholder.typicode.com/users'),
+//         Component: Users
+        
+//       },
+     
+//       {
+//         path: 'users2',
+//         element: <Suspense fallback={<span>Loading ....</span>}>
+          
+//           <Users2 usersPromise={usersPromise}></Users2>
+
+//         </Suspense>
+//       },
+      
+//       {
+//         // path: 'users/:userId',
+        
+//         // loader: ({params}) => fetch('https://jsonplaceholder.typicode.com/users'),
+//         // Component: UserDetails
+
+//         // (1) st commit previous
+//         path: 'users/:userId',
+//         // loader: ({params}) => {
+//         //   // console.log('params inside the loader',params);
+//         //   // (2)st commit previous
+//         //   console.log('params inside the loader',params.userId);
+//         //   // (2)en
+//         //   fetch('https://jsonplaceholder.typicode.com/users')},
+
+//           // (3)st commit (2) 
+//           loader: ({params}) => fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`),
+
+//           // (3)en then in UserDetails.jsx
+//           // (1) en 
+//           Component: UserDetails
+//       },
+//       // (9)st
+//       {
+//         path: 'posts',
+//         loader: ()=> fetch('https://jsonplaceholder.typicode.com/posts'),
+//         Component: Posts
+//       },
+//       // (9)st then in Posts.jsx file
+//       // (20)st
+//       {
+//         path: 'posts/:postId',
+//         loader: ({params}) => fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`),
+//         Component: PostDetail
+//       },
+//       // (20)en then in postDetail.jsx file
+//       { path: 'about', element: <div>About me here</div> }
+//     ]
+//   },
+//   {
+//     path: 'about',
+//     element: <div>About me here</div>
+//   },
+//   {
+//     path: 'blogs',
+//     element: <div>All my blogs are here</div>
+//   },
+//   {
+//     path: 'app',
+//     Component: App
+//   },
+//   {
+//     path: '/app2',
+//     // Component: App
+//     element: <App></App>
+//   }
+// ])
+
+// createRoot(document.getElementById('root')).render(
+//   <StrictMode>
+
+//     <RouterProvider router={router}></RouterProvider>
+
+//   </StrictMode>
+// );
+// // --------------------------
+// // Practice:
+// // import { StrictMode } from 'react'
+// // import { createRoot } from 'react-dom/client'
+// // import './index.css'
+// // import App from './App.jsx'
+
+// // const usersPromise = fetch('https://jsonplaceholder.typicode.com/users').then(res => res.json());
+
+
+// // const router = createBrowserRouter([
+// //   // {
+// //   //   path: '/',
+// //   //   element: <div>Hello from react router</div>
+// //   // },
+
+// //   {
+// //     path: '/',
+// //     Component: Root,
+// //     children: [
+// //       { index: true, Component: Home },
+// //       { path: 'mobiles', Component: Mobiles },
+// //       { path: 'laptops', Component: Laptops },
+// //       {
+// //         path: 'users',
+// //         loader: () => fetch('https://jsonplaceholder.typicode.com/users'),
+// //         Component: Users
+// //       },
+// //       {
+// //         path: 'posts',
+// //         loader: ()=> fetch('https://jsonplaceholder.typicode.com/posts'),
+// //         Component: Posts
+// //       },
+// //       {
+// //         path: 'posts/:postId',
+// //         loader: ({params}) => fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`),
+// //         Component: PostDetail
+// //       },
+
+// //       {
+// //         path: 'users2',
+// //         element: <Suspense fallback={<span>Loading....</span>}>
+// //           <Users2 usersPromise={usersPromise}></Users2>
+// //         </Suspense>
+// //       },
+
+// //       {
+// //         path: 'users/:userId',
+// //         loader: ({params}) => fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`),
+// //         Component: UserDetails
+// //       },
+// //       {
+// //         path: 'posts',
+// //         loader: () => fetch('https://jsonplaceholder.typicode.com/posts'),
+// //         Component: Posts
+// //       },
+
+// //       {
+// //         path: 'about',
+// //         element: <div>About me here</div>
+// //       },
+// //     ]
+// //   },
+
+// //   {
+// //     path: 'blogs',
+// //     element: <div>All my blogs are here </div>
+// //   },
+
+// //   {
+// //     path: 'app',
+// //     Component: App
+// //   },
+
+// //   {
+// //     path: '/app2',
+// //     element: <App></App>
+// //   }
+// // ])
+
+// // createRoot(document.getElementById('root')).render(
+// //   <StrictMode>
+// //     {/* <App /> */}
+// //     <RouterProvider router={router}></RouterProvider>
+
+// //   </StrictMode>,
+// // )
+
+// // -------------------------------End:37_6-(1) to (12) --------------------------------
+// -------------------------------Start: 37_7 ---------------------------------------
 
 import { StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
@@ -682,4 +882,4 @@ createRoot(document.getElementById('root')).render(
 //   </StrictMode>,
 // )
 
-// -------------------------------End:37_6-(1) to (12) --------------------------------
+// -------------------------------End:37_7-(1) to (12) --------------------------------
